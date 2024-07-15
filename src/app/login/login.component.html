@@ -1,0 +1,26 @@
+<form
+  class="ms-3 d-flex flex-column justify-content-center align-items-start gap-3 position-absolute translate-middle top-50 start-50"
+  #userForm="ngForm"
+  (ngSubmit)="login(userForm)">
+  <p-message *ngIf="loginError"  severity="error"
+             text="Invalid Credentials"></p-message>
+  <div class="p-field">
+    <label class="" for="usernameInput">Username</label>
+    <input #usernameEl pInputText id="usernameInput" #username="ngModel" name="username" [(ngModel)]="usernameValue" type="text" class="w-12rem ms-2"
+           required
+    />
+    <p-message *ngIf="(username.touched || username.dirty) && username.errors?.['required']" severity="error"
+               text="Please enter your username"></p-message>
+  </div>
+  <div class="p-field">
+    <label class="" for="passwordInput">Password</label>
+    <input #passwordEl pInputText id="passwordInput" [(ngModel)]="passwordValue" name="password" #password="ngModel" type="password"
+           class="w-12rem ms-2"
+           required
+           minlength="5" maxlength="6"/>
+    <p-message *ngIf="(password.touched || password.dirty) && password.errors?.['required']" severity="error"
+               text="Please enter your username"></p-message>
+  </div>
+
+  <p-button label="Login" icon="pi pi-user" type="submit" [disabled]="!userForm.valid"/>
+</form>
