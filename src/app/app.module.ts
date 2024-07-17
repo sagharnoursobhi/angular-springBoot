@@ -13,6 +13,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { ErrorComponent } from './error/error.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TableModule } from 'primeng/table';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { TableModule } from 'primeng/table';
     LoginComponent,
     WelcomeComponent,
     ErrorComponent,
-    TodoListComponent
+    TodoListComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

@@ -25,7 +25,6 @@ export class LoginComponent implements AfterViewInit {
     this.focusOnElement(this.passwordEl);
   }
 
-
   login(userForm: NgForm) {
     if (userForm.valid) {
       let validCredentials: boolean = this.usernameValue === "admin" && this.passwordValue === "admin";

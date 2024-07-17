@@ -1,12 +1,12 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
-import {ActivatedRoute, ParamMap, Router} from "@angular/router";
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.component.html',
   styleUrls: ['./welcome.component.scss']
 })
-export class WelcomeComponent implements AfterViewInit {
+export class WelcomeComponent implements OnInit {
   message: string | undefined;
   username: string | undefined;
 
@@ -15,7 +15,7 @@ export class WelcomeComponent implements AfterViewInit {
     this.username = "";
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.username = this.activatedRoute.snapshot.params["name"];
   }
 }
