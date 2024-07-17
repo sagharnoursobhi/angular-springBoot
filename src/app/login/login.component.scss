@@ -1,0 +1,29 @@
+@import "../../styles.scss";
+
+.bg-container {
+  background: url("../../assets/images/login.png") no-repeat center center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+:host ::ng-deep .p-button {
+  &.btn-bg {
+    background: $primary_blue_color!important;
+    width: 400px;
+  }
+}
+
+input {
+  width: 400px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: $primary_white_color;
+  border-bottom: 1px solid $primary_white_color;
+
+  &::placeholder {
+    color: $primary_white_color!important;
+  }
+}
+
+

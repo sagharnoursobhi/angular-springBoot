@@ -13,3 +13,11 @@ body {
 a {
   cursor: pointer;
 }
+
+$primary_blue_color: #4044ED;
+$primary_white_color: rgba(255, 255, 255, 0.87);
+
+:host {
+  --btn-bg-color: #4044ED;
+  --btn-size: 400px;
+}
