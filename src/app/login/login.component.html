@@ -1,5 +1,5 @@
-<div class="bg-container d-flex justify-content-center align-items-center">
-  <div class="login-container d-flex justify-content-center align-items-center">
+<div class="bg-container flex-column d-flex justify-content-center align-items-center">
+  <div class="login-container d-flex justify-content-center align-items-center opacity-0">
     <form
       class="d-flex flex-column justify-content-center align-items-start gap-3"
       #userForm="ngForm"
@@ -23,11 +23,16 @@
                type="password"
                class="w-12rem"
                required
-               minlength="5" maxlength="6" placeholder="Password"/>
+               placeholder="Password"/>
 
       </div>
 
       <p-button styleClass="btn-bg mt-5" label="Login" type="submit" [disabled]="!userForm.valid"/>
     </form>
+  </div>
+  <div class="text-white">
+    <p-card>
+      Welcome User
+    </p-card>
   </div>
 </div>

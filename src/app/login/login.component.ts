@@ -1,6 +1,7 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Router} from "@angular/router";
+import {HardcodedAuthenticationService} from "../services/hardcodedAuthentication/hardcoded-authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements AfterViewInit {
   @ViewChild("usernameEl") usernameEl!: ElementRef;
   @ViewChild("passwordEl") passwordEl!: ElementRef;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private service: HardcodedAuthenticationService) {
     this.usernameValue = "";
     this.passwordValue = "";
     this.loginError = "";
@@ -27,7 +28,7 @@ export class LoginComponent implements AfterViewInit {
 
   login(userForm: NgForm) {
     if (userForm.valid) {
-      let validCredentials: boolean = this.usernameValue === "admin" && this.passwordValue === "admin";
+      let validCredentials: boolean = this.service.authenticate(this.usernameValue, this.passwordValue);
       if (validCredentials) {
         this.router.navigate(["welcome", this.usernameValue]).then((success) => {
           console.log(success, "Navigation is performed successfully");

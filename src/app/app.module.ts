@@ -14,6 +14,7 @@ import { ErrorComponent } from './error/error.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TableModule } from 'primeng/table';
 import { MenuComponent } from './menu/menu.component';
+import {CardModule} from "primeng/card";
 
 
 @NgModule({
@@ -25,17 +26,18 @@ import { MenuComponent } from './menu/menu.component';
     TodoListComponent,
     MenuComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    DividerModule,
-    ButtonModule,
-    FormsModule,
-    InputTextModule,
-    MessageModule,
-    MessagesModule,
-    TableModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        DividerModule,
+        ButtonModule,
+        FormsModule,
+        InputTextModule,
+        MessageModule,
+        MessagesModule,
+        TableModule,
+        CardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
