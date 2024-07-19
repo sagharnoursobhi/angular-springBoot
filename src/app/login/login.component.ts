@@ -8,10 +8,11 @@ import {HardcodedAuthenticationService} from "../services/hardcodedAuthenticatio
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginComponent implements AfterViewInit, OnInit {
   usernameValue: string;
   passwordValue: string;
   loginError: string;
+  user: string | null;
   @ViewChild("usernameEl") usernameEl!: ElementRef;
   @ViewChild("passwordEl") passwordEl!: ElementRef;
 
@@ -19,11 +20,16 @@ export class LoginComponent implements AfterViewInit {
     this.usernameValue = "";
     this.passwordValue = "";
     this.loginError = "";
+    this.user = "";
   }
 
   ngAfterViewInit(): void {
     this.focusOnElement(this.usernameEl);
     this.focusOnElement(this.passwordEl);
+  }
+
+  ngOnInit(): void {
+    this.user = this.service.username;
   }
 
   login(userForm: NgForm) {
@@ -47,8 +53,19 @@ export class LoginComponent implements AfterViewInit {
   }
 
   focusOnElement(el: ElementRef): void {
-    el.nativeElement.addEventListener("focus", () => {
-      el.nativeElement.select();
-    });
+   if (el) {
+     el.nativeElement.addEventListener("focus", () => {
+       el.nativeElement.select();
+     });
+   }
   }
+
+  userIsLoggedIn() {
+    return this.service.userIsLoggedIn();
+  }
+
+  userLoggedOut() {
+    this.service.logout();
+  }
+
 }

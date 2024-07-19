@@ -1,38 +1,45 @@
 <div class="bg-container flex-column d-flex justify-content-center align-items-center">
-  <div class="login-container d-flex justify-content-center align-items-center opacity-0">
-    <form
-      class="d-flex flex-column justify-content-center align-items-start gap-3"
-      #userForm="ngForm"
-      (ngSubmit)="login(userForm)">
-      <p-message *ngIf="loginError" severity="error"
-                 text="Invalid Credentials"></p-message>
-      <p-message *ngIf="(username.touched || username.dirty) && username.errors?.['required']" severity="error"
-                 text="Please enter your username"></p-message>
-      <p-message *ngIf="(password.touched || password.dirty) && password.errors?.['required']" severity="error"
-                 text="Please enter your username"></p-message>
-      <div class="p-field">
-        <input #usernameEl pInputText id="usernameInput" #username="ngModel" name="username" [(ngModel)]="usernameValue"
-               type="text" class="w-12rem"
-               required
-               placeholder="Username"
-        />
-
-      </div>
-      <div class="p-field mt-3">
-        <input #passwordEl pInputText id="passwordInput" [(ngModel)]="passwordValue" name="password" #password="ngModel"
-               type="password"
-               class="w-12rem"
-               required
-               placeholder="Password"/>
-
-      </div>
-
-      <p-button styleClass="btn-bg mt-5" label="Login" type="submit" [disabled]="!userForm.valid"/>
-    </form>
-  </div>
-  <div class="text-white">
-    <p-card>
-      Welcome User
+  <div *ngIf="userIsLoggedIn(); else loginTemplate" class="bg-container flex-column d-flex justify-content-center align-items-start gap-3">
+    <p-card header="Welcome" [style]="{ width: '360px' }">
+      <p-avatar icon="pi pi-user" styleClass="mr-2" size="xlarge"></p-avatar>
+      <h3>{{user}}</h3>
     </p-card>
+    <button pButton type="button" label="Logout" icon="pi pi-sign-out" (click)="userLoggedOut()"></button>
   </div>
+  <ng-template #loginTemplate>
+    <div class="login-container d-flex justify-content-center align-items-center">
+      <form
+        class="d-flex flex-column justify-content-center align-items-start gap-3"
+        #userForm="ngForm"
+        (ngSubmit)="login(userForm)">
+        <p-message *ngIf="loginError" severity="error"
+                   text="Invalid Credentials"></p-message>
+        <p-message *ngIf="(username.touched || username.dirty) && username.errors?.['required']" severity="error"
+                   text="Please enter your username"></p-message>
+        <p-message *ngIf="(password.touched || password.dirty) && password.errors?.['required']" severity="error"
+                   text="Please enter your username"></p-message>
+        <div class="p-field">
+          <input #usernameEl pInputText id="usernameInput" #username="ngModel" name="username"
+                 [(ngModel)]="usernameValue"
+                 type="text" class="w-12rem"
+                 required
+                 placeholder="Username"
+          />
+
+        </div>
+        <div class="p-field mt-3">
+          <input #passwordEl pInputText id="passwordInput" [(ngModel)]="passwordValue" name="password"
+                 #password="ngModel"
+                 type="password"
+                 class="w-12rem"
+                 required
+                 placeholder="Password"/>
+
+        </div>
+
+        <p-button styleClass="btn-bg mt-5" label="Login" type="submit" [disabled]="!userForm.valid"/>
+      </form>
+    </div>
+  </ng-template>
 </div>
+

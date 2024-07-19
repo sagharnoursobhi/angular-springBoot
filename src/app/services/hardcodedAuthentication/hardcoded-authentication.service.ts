@@ -13,6 +13,10 @@ export class HardcodedAuthenticationService {
     return username === "28minutes" && password === "1234";
   }
 
+  get username(): string | null {
+    return sessionStorage.getItem("username");
+  }
+
   userIsLoggedIn() {
     return sessionStorage.getItem("username") !== null;
   }
