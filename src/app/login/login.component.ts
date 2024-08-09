@@ -13,6 +13,7 @@ export class LoginComponent implements AfterViewInit, OnInit {
   passwordValue: string;
   loginError: string;
   user: string | null;
+  isUserLoggedIn: boolean | undefined;
   @ViewChild("usernameEl") usernameEl!: ElementRef;
   @ViewChild("passwordEl") passwordEl!: ElementRef;
 

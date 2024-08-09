@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +16,7 @@ export class HardcodedAuthenticationService {
     return sessionStorage.getItem("username");
   }
 
-  userIsLoggedIn() {
+  userIsLoggedIn(): boolean | null {
     return sessionStorage.getItem("username") !== null;
   }
 
