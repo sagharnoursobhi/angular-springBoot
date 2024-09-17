@@ -68,5 +68,4 @@ export class LoginComponent implements AfterViewInit, OnInit {
   userLoggedOut() {
     this.service.logout();
   }
-
 }

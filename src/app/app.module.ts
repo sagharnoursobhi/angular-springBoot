@@ -16,6 +16,7 @@ import { TableModule } from 'primeng/table';
 import { MenuComponent } from './menu/menu.component';
 import {CardModule} from "primeng/card";
 import {AvatarModule} from "primeng/avatar";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import {AvatarModule} from "primeng/avatar";
     WelcomeComponent,
     ErrorComponent,
     TodoListComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +39,8 @@ import {AvatarModule} from "primeng/avatar";
     MessagesModule,
     TableModule,
     CardModule,
-    AvatarModule
+    AvatarModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
