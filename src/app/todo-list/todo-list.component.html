@@ -1,17 +1,21 @@
-
 <p-table [value]="todos" [tableStyle]="{ 'min-width': '20rem' }">
   <ng-template pTemplate="header">
     <tr>
+      <th>{{columns.id}}</th>
       <th>{{ columns.description }}</th>
       <th>{{ columns.isCompleted }}</th>
       <th>{{ columns.targetDate }}</th>
+      <th>{{ columns.actions }}</th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-todo>
     <tr>
+      <td>{{ todo.id }}</td>
       <td>{{ todo.description }}</td>
-      <td>{{ todo.done }}</td>
+      <td>{{ todo.completed }}</td>
       <td>{{ todo.targetDate | date | uppercase }}</td>
+      <td><button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button></td>
+      <td><button class="btn btn-primary">Edit</button></td>
     </tr>
   </ng-template>
 </p-table>

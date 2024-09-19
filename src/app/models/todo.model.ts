@@ -1,6 +1,6 @@
 export default interface TodoModel {
   id: number;
   description: string;
-  done: boolean;
-  targetDate: Date;
+  completed: boolean;
+  targetDate: string;
 }
